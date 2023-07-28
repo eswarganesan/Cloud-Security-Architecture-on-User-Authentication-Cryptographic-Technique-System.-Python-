@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company Register</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<!-- HTML------------------------------------------------------------------------------------------------------------->
+
+<body>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a><b>{{name}}</b></a>
+    <a href="home">Home</a>
+    <a href="account-update">Account Update</a>
+    <a href="companyRegister">Register Company</a>
+    <a href="companyDetails">Company Details</a>
+    <a href="transactions">Transactions</a>
+    <a href="addProduct">Add Product</a>
+    <a href="#">News</a>
+    <a href="logout" name="LogOut">LogOut</a>
+  </div>
+
+
+<div class="header" id="myHeader">
+  <h2><center><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>   Home</center></h2>
+</div>
+<div id="main">
+<div class="content">
+
+  <form action="{% url 'companyRegister' %}" method="post">
+    {% csrf_token %}
+  <div class="container">
+    <h1>Register Users</h1>
+    <h2 style="color:{{ color }};">{{ message }}</h2>
+    <p>Please fill in this form to add a company to database.</p>
+    <hr>
+    <label for="cid"><b>User Id</b></label>
+    <input type="text" placeholder="Enter User Id" name="cid" required>
+    <hr>
+    <label for="cname"><b>User Name</b></label>
+    <input type="text" placeholder="User Name" name="cname" required>
+    <hr>
+    <label for="cpass"><b>Password</b></label>
+    <input type="password" placeholder="At least 1 Upper, Lower Case, Number and Length>6" name="cpass" required>
+    <hr>
+    <label for="creppass"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Enter Password" name="creppass" required>
+    <hr>
+    <label for="ctype"><b>User Type</b></label>
+    <input type="text" placeholder="Enter User type" name="ctype" required>
+    <hr>
+    <label for="cemail"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="cemail" required>
+    <hr>
+    <label for="csize"><b>Branch ID</b></label>
+    <input type="number" placeholder="Enter Branch ID" name="csize" required>
+    <hr>
+    <label for="cloc"><b> Address</b></label>
+    <input type="text" placeholder="Enter  Address" name="cloc" required>
+    <hr>
+
+    <button type="submit" class="registerbtn" style="padding: 10px 40px 10px 40px;font-weight: bold;">Register</button>
+  </div>
+</form>
+  
+</div>
+
+</div>
+
+
+
+
+<!-- Java Script------------------------------------------------------------------------------------------------------------->
+
+<script>
+
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+</script>
+
+</body>
+</html>

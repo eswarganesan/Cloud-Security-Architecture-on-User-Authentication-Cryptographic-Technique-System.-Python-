@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/transactions.css' %}">
+</head>
+<body>
+        <div class="header">
+            <a href="home" class="logo">TechCiti: {{name}}</a>
+            <div class="header-right">
+              <a class="active" href="home">Home</a>
+              <a href="account-update">Account Update</a>
+              <a href="companyRegister">Register Company</a>
+              <a href="companyDetails">Company Details</a>
+              <a href="transactions">Transactions</a>
+              <a href="addProduct">Add Product</a>
+              <a href="#">News</a>
+              <a href="logout" name="LogOut">LogOut</a>
+            </div>
+        </div>
+
+<main>
+<div class="row">
+  <div class="left" style="background-color:#bbb;">
+    <h2>Menu</h2>
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a company">
+    
+    <ul id="myMenu">
+            
+            <div class="tab">
+            {% for key,values in transDic.items %}
+                <li class="tablinks" onmouseover="opencompany(event, '{{ key }}')">
+                {% for value in values|slice:":1" %}
+                  {% for ele in value|slice:":1" %}
+                  <a>{{ ele.1 }}</a></li>
+                  {% endfor %}
+                {% endfor %}
+            {% endfor %}
+
+            </div>
+    </ul>
+  </div>
+
+
+  
+  <div class="right" style="background-color:#ddd;">
+    <h2>TRANSACTIONS</h2>
+    {% for key,values in transDic.items %}
+    <div id="{{ key }}" class="tabcontent">
+            <div class="dtls">
+            {% for value in values|slice:":1" %}
+              {% for ele in value|slice:":1" %}
+              <h3>{{ ele.1|upper }}</h3>
+              {% endfor %}  
+            {% endfor %}
+            <table style="width:120%">  
+            <tr>
+              <th>Transaction ID</th>
+              <th>Amount</th>
+              <th>Time</th>
+              <th>Products</th>
+            </tr>
+            {% for value in values %}
+            {% for ele in value|slice:":1" %}
+            <tr>
+              <td>{{ ele.10 }}</td>
+              <td>{{ ele.11 }}</td>
+              <td>{{ ele.12 }}</td>
+              {% endfor %}
+              <td>{{ value.1 }}</td>
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+      </div>
+    {% endfor %}      
+  <div class="clearfix"></div>
+</div>
+</main>
+
+<form action="{% url 'transactions' %}" method="POST">
+{% csrf_token %}
+<div class="container">
+  <h1>PRODUCT RECOMMENDATION: {{ ans }}</h1>
+  <label for="cName"><b>Company Name</b></label>
+  <input type="text" placeholder="Enter Company Name" name="cName" value="{{ cName }}" required>
+  
+  <label for="cType"><b>Company Type</b></label>
+  <input type="text" placeholder="Enter Company Type" name="cType" value="{{ cType }}" required>
+  {% if tcount < 0 %}
+  <label for="nprod"><b>Number of Products</b></label>
+  <input type="number" placeholder="Enter # of products" name="tprodCount" required>
+  <button type="submit">Submit</button>
+  {% endif %}
+
+  {% if tcount > 0 %}
+  {% for i in tprodCount %}
+  <select name="pList_{{ i }}">
+    {% for ele in prodSet %}
+    <option value="{{ ele }}">{{ ele }}</option>
+    {% endfor %}
+  </select>
+  {% endfor %}
+  <button class="btn" type="submit">Submit</button>
+  {% endif %}
+  </div>
+</form>
+<script>
+    
+function myFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
+
+function opencompany(evt, companyname) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(companyname).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
+
+</body>
+</html>

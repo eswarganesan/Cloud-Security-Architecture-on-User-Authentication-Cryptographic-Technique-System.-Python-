@@ -1,0 +1,112 @@
+<html>
+<head>
+{% load static %}
+        <!-- Bootstrap -->
+    <link href="{% static "./bootstrap.css" %}" rel="stylesheet">
+
+<style>
+.header{
+	padding: 10px;
+	text-align: center;
+}
+
+body {
+  font-family: Arial;
+  color: green;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding:1px 5px 15px 20px
+}
+
+.left {
+  left: 0;
+  background-color: white;
+}
+
+.right {
+  right: 0;
+  background-color: white;
+}
+#details{
+	position: absolute;
+}
+#submit{
+background-color: green;
+position: relative;
+top: 470px;
+color:white;
+
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: green;
+    color: white;
+}
+</style>
+
+</head>
+<body>
+
+<div class="split left">
+
+<h1 class="header">Put your code here</h1>
+
+<form action="{% url 'EH' %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<textarea name="details" id="details" rows="29" cols="70" required></textarea>
+
+
+<input id="submit"  type="submit"  value="SUBMIT"/>
+
+</form>
+
+</div>
+
+
+<div class="split right">
+<table id="customers">
+			<tr>
+				<th>Line No</th><th>Exception</th>
+			</tr>
+			{%for i in data2%}
+			<tr>
+				<td>{{i.0}}</td>
+				<td>{{i.1}}</td>
+
+			</tr>
+			{%endfor%}
+</table>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Accesse</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <br>
+    <br>
+
+
+<h3>Your File Uploaded SuccessFully</h3>
+
+<form action="{% url 'access1' %}" method="post">
+    {% csrf_token %}
+<label ><b>File Access Control</b></label>
+    <ul class="list-group">
+    <li class="list-group-item active">
+        <input type="radio" name="code" value="101" checked>Manipal-Kar</li>
+        <li class="list-group-item"> <input type="radio" name="code" value="102"> Manipal-Chenai</li>
+        <li class="list-group-item"> <input type="radio" name="code" value="103"> Manipal-Sikkim</li>
+        <li class="list-group-item">   <input type="radio" name="code" value="104"> Manipal-MBBS</li>
+        <li class="list-group-item">   <input type="radio" name="code" value="105"> Manipal-Jaipur</li>
+
+ <button type="submit" class="registerbtn">Provide</button>
+
+
+<a href="home">Go back</a>
