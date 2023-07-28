@@ -1,0 +1,61 @@
+University Auth Register
+
+
+001
+Eswar G
+IT
+9361045302
+SIBILING BD----05-1998
+CITY OR TOWN ---------Bengaluru
+eswarganesan703@gmail.com
+Eswar.0511
+Male
+
+
+================================================
+College Auth Register
+
+
+C001
+Karthikeyan G
+Manipal-Chenai
+9600241510
+SIBILING BD------ 11-2001
+CITY OR TOWN ----------Hyderabad
+karthi112830@gmail.com
+Karthik.1105
+Karthik.1105
+Male
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
