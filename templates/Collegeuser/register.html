@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Edge</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h5 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+
+  background: url({% static 'app1/banner1.jpg' %})  50% 50%;   background-size:cover;
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-text-white">
+  <div class="w3-display-middle w3-jumbo">
+    <p style="font-size:35px;">Edge Computing analysis on university Cloud computing using Cryptographic Algorithms</p>
+  </div>
+  <div class="w3-display-topleft w3-container w3-xlarge">
+    <p><button onclick="document.getElementById('menu').style.display='block'" class="w3-button w3-black">Menu</button></p>
+    <p><button onclick="document.getElementById('contact').style.display='block'" class="w3-button w3-black">Register</button></p>
+  </div>
+  <div class="w3-display-bottomleft w3-container">
+    <p class="w3-xlarge"></p>
+    <p class="w3-large"></p>
+    </div>
+</div>
+ <marquee><h3>{{message}}</h3></marquee>
+<!-- Menu Modal -->
+<div id="menu" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black w3-display-container">
+      <span onclick="document.getElementById('menu').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Login please !</h1>
+    </div>
+    <div class="w3-container">
+      <div class="container">
+  <div class="container signin">
+    <p>Already have an account ? <a href="login1">Sign in</a>.</p>
+  </div>
+  </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Contact Modal -->
+<div id="contact" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black">
+      <span onclick="document.getElementById('contact').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Contact</h1>
+    </div>
+    <div class="w3-container">
+
+
+<form action="{% url 'register1' %}" method="post">
+    {% csrf_token %}
+      <div class="container">
+    <h1>College Auth Register</h1>
+    <h2>{{ message }}</h2>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+    <label for="emp_id"><b>College user Id</b></label>
+    <input  type="text" placeholder="Enter Employee Id" name="emp_id" required>
+
+          <label for="name"><b>Full Name</b></label>
+    <input type="text" placeholder="Enter Full Name" name="name" required>
+<br><br>
+
+    <label for="gender"><b>College</b></label><br>
+    <input type="radio" name="code" value="101" checked> Manipal-Kar <br>
+    <input type="radio" name="code" value="102"> Manipal-Chenai  <br>
+    <input type="radio" name="code" value="103">  Manipal-Sikkim  <br>
+          <input type="radio" name="code" value="104"> Manipal-MBBS   <br>
+    <input type="radio" name="code" value="105"> Manipal-Jaipur<br>
+          <br>
+    <label for="phone"><b>Contact</b></label>
+    <input type="number" placeholder="Enter 10 digit Contact Number" name="phone" required>
+<br><br>
+    <label for="ques_1_id_label"><b>Security Question 1</b></label>
+    <select name="ques_1_id">
+      <option value=1>What was your childhood nickname?</option>
+      <option value=2>In what city did you meet your spouse/significant other?</option>
+      <option value=3>What is the name of your favorite childhood friend?</option>
+      <option value=4>What is your oldest sibling’s birthday month and year?</option>
+      <option value=5>What is the middle name of your oldest child?</option>
+    </select>
+    <input type="text" placeholder="Enter Answer" name="ans_1" required>
+<br><br>
+    <label for="ques_2_id_label"><b>Security Question 2</b></label>
+    <select name="ques_2_id">
+      <option value=1>What school did you attend for sixth grade?</option>
+      <option value=2>What was the name of your first stuffed animal?</option>
+      <option value=3>In what city does your nearest sibling live?</option>
+      <option value=4>In what city or town was your first job?</option>
+      <option value=5>Which is the first company you ever worked for?</option>
+    </select>
+    <input type="text" placeholder="Enter Answer" name="ans_2" required>
+<br><br>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Length more than 6 characters, at least one upper case,lower case and a number" name="password" required>
+<br><br>
+    <label for="repeat_password"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="repeat_password" required>
+<br><br>
+    <label for="gender"><b>Gender</b></label>
+    <input type="radio" name="gender" value="Male" checked> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other
+<br><br>
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <button type="submit" class="registerbtn">Register</button>
+          <br>
+           <p>Already Have an account? <a href="login1">Sign in</a>.</p>
+
+
+</div>
+</form>
+
+
+
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

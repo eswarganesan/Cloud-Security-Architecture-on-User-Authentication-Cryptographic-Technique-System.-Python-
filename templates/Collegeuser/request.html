@@ -1,0 +1,72 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Edge Computing analysis on university Cloud computing using Cryptographic Algorithm</h2>
+    <br>
+    <br>
+
+<h3>Download Page</h3>  <h2>{{ message }}</h2>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>Filename</th>
+        <th>OTP</th>
+          <th>Download</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for newsletter in downdata %}
+      <tr>
+
+
+<form action="{% url 'down' %}" method="post">
+    {% csrf_token %}
+    <td><input name="filename" type="text" value="{{newsletter.filename}}" ></td>
+    <td><input type="text" name="otp"></td>
+    <td><input type="submit"></td>
+</form>
+ {% endfor %}
+
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
